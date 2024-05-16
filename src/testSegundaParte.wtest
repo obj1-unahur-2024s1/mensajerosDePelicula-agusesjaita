@@ -1,0 +1,39 @@
+import mensajeria.*
+import mensajeros.*
+import paquetes.*
+
+test "contratar mensajeros mensajero" {
+	
+	mensajeria.contratarMensajero(roberto)
+	mensajeria.contratarMensajero(neo)
+	mensajeria.contratarMensajero(chuckNorris)
+	assert.that(mensajeria.esGrande())
+
+}
+
+test "despedir a uno y a todos los mensajeros" {
+	
+	mensajeria.despedirMensajero(roberto)
+	assert.that(not mensajeria.esGrande())
+	mensajeria.despedirATodos()
+}
+
+test "la mensajeria no es grande (esta vacia)" {
+	
+	assert.that(not mensajeria.esGrande())
+
+}
+
+test "El primer mensajero puede entregar un paquete en brookling" {
+	
+	mensajeria.contratarMensajero(chuckNorris)
+	mensajeria.contratarMensajero(neo)
+	assert.that(mensajeria.puedeSerEntregadoPorPrimero(paquetito))
+}
+
+test "el peso del ultimo mensajero" {
+	
+	mensajeria.contratarMensajero(neo)
+	mensajeria.contratarMensajero(chuckNorris)
+	assert.equals(80, mensajeria.ultimoPeso())
+}

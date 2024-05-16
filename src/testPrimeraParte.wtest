@@ -1,0 +1,34 @@
+import mensajeria.*
+import mensajeros.*
+import paquetes.*
+
+test "Roberto (90kg) puede llevar un paquete que está pago en un camión que tiene un acoplado" {
+
+	camion.cargarAcoplados(1)
+	roberto.transporte("camion")
+	roberto.pesa(90)
+	
+		assert.that(mensajeria.puedeLlevarPaquete(paquetito, roberto, puenteDeBrookling))
+}
+
+test "neo con crédito no puede llevar un paquete que no está pago a la matrix" {
+	
+	neo.tieneCredito(true)
+	
+		assert.that(not mensajeria.puedeLlevarPaquete(paquetonViajero, neo, laMatrix))
+}
+
+test "al roberto viajar en bicicleta y pesar 10kg, su peso total es 15kg" {
+	
+	roberto.pesa(10)
+	roberto.transporte("bicicleta")
+	assert.equals(15, roberto.peso())
+}
+
+test "chuck norris puede viajar a brooking y a la matrix sin ser modificado" {
+	
+	assert.that(puenteDeBrookling.puedePasar(chuckNorris))
+	assert.that(laMatrix.puedePasar(chuckNorris))
+}
+
+
